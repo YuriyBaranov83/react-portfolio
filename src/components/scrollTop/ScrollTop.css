@@ -26,3 +26,10 @@
     visibility: visible;
     right: 20px;
 }
+
+.scrollTop.active.in-footer{
+    background:var(--first-color);
+}
+.dark-theme .scrollTop.active.in-footer {
+    background:var(--third-color);
+}

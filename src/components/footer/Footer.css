@@ -65,3 +65,45 @@
     margin-top: 30px;
     padding: 0 15px;
 }
+
+@media (max-width: 980px) {
+    .footer-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .about-group {
+        text-align: center;
+    }
+
+    .hr {
+        width: 60%;
+        border: 1px solid var(--liner-color);
+        margin: 0px auto;
+    }
+
+    .info-group ul li a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 460px) {
+    .about-group {
+        text-align: left;
+    }
+
+    .info-group,
+    .follow-group {
+        align-items: flex-start;
+    }
+
+    .info-group ul,
+    .follow-group ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .hr {
+        width: 100%;
+    }
+}

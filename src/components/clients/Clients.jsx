@@ -1,21 +1,49 @@
-﻿import clientData from "@/data/clientsData";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { SectionTitle } from "@components";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
 import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
-
 import "./Clients.css";
+
+const LazyClientsCarousel = lazy(() => import("./ClientsCarousel"));
+const CLIENTS_ROOT_MARGIN = "300px 0px";
 
 const Clients = () => {
   const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const [shouldLoadCarousel, setShouldLoadCarousel] = useState(
+    () =>
+      typeof window !== "undefined" && !("IntersectionObserver" in window)
+  );
+
+  useEffect(() => {
+    if (shouldLoadCarousel) {
+      return;
+    }
+
+    const sectionElement = sectionRef.current;
+
+    if (!sectionElement) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadCarousel(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: CLIENTS_ROOT_MARGIN }
+    );
+
+    observer.observe(sectionElement);
+
+    return () => observer.disconnect();
+  }, [shouldLoadCarousel]);
 
   return (
-    <section className="section our-client" id="clients">
+    <section className="section our-client" id="clients" ref={sectionRef}>
       <div className="container flex-center">
         <SectionTitle
           title={t("clients.title")}
@@ -29,39 +57,21 @@ const Clients = () => {
           viewport={{ once: false, amount: 0.5 }}
           variants={slideInVariants("top", 0.7, 100, false)}
         >
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            loop={true}
-            className="client-swiper"
-          >
-            {clientData.map((client) => (
-              <SwiperSlide key={client.id}>
-                <div className="swiper-slide swiper-client-block">
-                  <div className="client-img">
-                    <img
-                      src={client.imgSrc}
-                      alt={client.name}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="client-details">
-                    <p>{t(client.descriptionKey)}</p>
-                    <h3>{client.name}</h3>
-                    <span>{t(client.positionKey)}</span>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {shouldLoadCarousel ? (
+            <Suspense
+              fallback={
+                <div className="client-swiper-placeholder" aria-hidden="true" />
+              }
+            >
+              <LazyClientsCarousel />
+            </Suspense>
+          ) : (
+            <div className="client-swiper-placeholder" aria-hidden="true" />
+          )}
         </Motion.div>
       </div>
     </section>
   );
 };
-export default Clients;
 
+export default Clients;

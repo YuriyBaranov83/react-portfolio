@@ -72,6 +72,9 @@
 }
 .home-img {
     position: relative;
+    width: min(100%, 420px);
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
 }
 .home-img::before {
     content: '';
@@ -91,8 +94,8 @@
   z-index: -10;
 }
 .home-img img {
-    width: 90%;
-    max-height: 500px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -128,6 +131,7 @@
     }
     .home-img {
         order: 1;
+        width: min(85vw, 360px);
     }
     .home-info {
         order: 2;

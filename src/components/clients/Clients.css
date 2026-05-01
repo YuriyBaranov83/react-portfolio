@@ -2,6 +2,13 @@
     width: 100%;
 }
 
+.client-swiper-placeholder {
+    min-height: 320px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--bg-transparent-color-02);
+}
+
 .client-swiper .swiper-slide {
     display: flex;
     align-items: center;
@@ -58,6 +65,10 @@
 }
 
 @media (max-width:980px) {
+    .client-swiper-placeholder {
+        min-height: 460px;
+    }
+
     .client-swiper .swiper-slide {
         flex-direction: column;
     }

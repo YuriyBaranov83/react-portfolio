@@ -6,7 +6,6 @@
   FaArrowDown,
 } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
-import { mainImg } from "@images";
 import "./Home.css";
 import { motion as Motion } from "framer-motion";
 import { iconVariants, slideInVariants } from "@/utils/animation";
@@ -108,11 +107,13 @@ const Home = () => {
           variants={slideInVariants("right", 0.7, 100, false)}
         >
           <img
-            src={mainImg}
+            src="/main-img.webp"
             alt="Portrait of Yuriy Baranov"
             loading="eager"
             fetchPriority="high"
             decoding="async"
+            width="764"
+            height="764"
           />
         </Motion.div>
       </div>

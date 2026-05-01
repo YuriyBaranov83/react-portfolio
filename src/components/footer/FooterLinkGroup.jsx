@@ -1,4 +1,3 @@
-import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 
 const FooterLinkGroup = ({ title, links, isSocial }) => {
@@ -26,9 +25,9 @@ const FooterLinkGroup = ({ title, links, isSocial }) => {
                 </span>
               )
             ) : (
-              <Link to={link.href} smooth={true} duration={500}>
+              <a href={`#${link.href}`}>
                 {link.labelKey ? t(link.labelKey) : link.label}
-              </Link>
+              </a>
             )}
           </li>
         ))}

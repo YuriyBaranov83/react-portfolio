@@ -1,4 +1,3 @@
-import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 import i18n from "@/components/i18n";
 import "./Nav.css";
@@ -20,16 +19,14 @@ const Nav = ({ isMenuOpen, handleMenuClick }) => {
     >
       <div className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
         {navItems.map((item) => (
-          <Link
-            to={item}
+          <a
+            href={`#${item}`}
             key={item}
             className="nav-link"
             onClick={handleMenuClick}
-            smooth={true}
-            duration={500}
           >
             {t(`nav.${item}`)}
-          </Link>
+          </a>
         ))}
         <div className="lang-switch">
           <a href="#home" className="logo" onClick={handleMenuClick}>

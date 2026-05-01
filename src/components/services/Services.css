@@ -112,6 +112,14 @@
     z-index: 2;
 }
 
+.service-modal-body .modal-close-btn>svg {
+    color: var(--first-color);
+}
+
+.dark-theme .service-modal-body .modal-close-btn>svg {
+    color: #fff;
+}
+
 .service-modal-body h3 {
     font-size: 30px;
 }

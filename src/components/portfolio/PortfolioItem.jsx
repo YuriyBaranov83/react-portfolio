@@ -1,10 +1,10 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import PortfolioModal from "./PortfolioModal";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
 
-const PortfolioItem = ({ item , index}) => {
+const PortfolioItem = ({ item, index }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const PortfolioItem = ({ item , index}) => {
   };
 
   return (
-    <motion.div
+    <Motion.div
       className="portfolio-img-card"
       initial="hidden"
       whileInView="visible"
@@ -32,7 +32,13 @@ const PortfolioItem = ({ item , index}) => {
       viewport={{ once: false, amount: 0.5 }}
       variants={slideInVariants("top", 0.5, 70, true)}
     >
-      <div className="img-card" onClick={openModal}>
+      <button
+        type="button"
+        className="img-card"
+        onClick={openModal}
+        aria-label={`Open portfolio item ${translatedItem.title}`}
+        aria-haspopup="dialog"
+      >
         <div className="overlay"></div>
         <div className="info">
           <h3>{translatedItem.title}</h3>
@@ -44,7 +50,7 @@ const PortfolioItem = ({ item , index}) => {
           loading="lazy"
           decoding="async"
         />
-      </div>
+      </button>
       {isModalOpen && (
         <PortfolioModal
           item={translatedItem}
@@ -52,7 +58,8 @@ const PortfolioItem = ({ item , index}) => {
           closeModal={closeModal}
         />
       )}
-    </motion.div>
+    </Motion.div>
   );
 };
 export default PortfolioItem;
+

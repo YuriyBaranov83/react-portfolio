@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion as Motion } from "framer-motion";
 import workExperience from "../../data/workExperience";
 import { useTranslation } from "react-i18next";
 import { slideInVariants } from "@/utils/animation";
@@ -8,7 +8,7 @@ const WorkExperience = () => {
 
   return (
     <div className="education work-exp">
-      <motion.h3
+      <Motion.h3
         className="work-exp-title"
         initial="hidden"
         whileInView="visible"
@@ -17,12 +17,12 @@ const WorkExperience = () => {
         variants={slideInVariants("top", 0.6, 50, true)}
       >
         {t("skills.workExperience")}
-      </motion.h3>
+      </Motion.h3>
       <div className="skills-info">
         {workExperience.map((item, index) => (
-          <motion.div
+          <Motion.div
             className="experience-card"
-            key={index}
+            key={item.id}
             initial="hidden"
             whileInView="visible"
             custom={index}
@@ -37,10 +37,11 @@ const WorkExperience = () => {
             <div className="hr"></div>
             <h4 className="label">{t(item.companyKey)}</h4>
             <p>{t(item.descriptionKey)}</p>
-          </motion.div>
+          </Motion.div>
         ))}
       </div>
     </div>
   );
 };
 export default WorkExperience;
+

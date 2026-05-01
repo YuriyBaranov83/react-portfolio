@@ -1,7 +1,7 @@
-import { FaPaperPlane } from "react-icons/fa";
+﻿import { FaPaperPlane } from "react-icons/fa";
 import "./getInTouch.css";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
 
 const GetInTouch = () => {
@@ -11,7 +11,7 @@ const GetInTouch = () => {
     <div className="get-in-touch sub-section">
       <div className="container flex-center">
         <div className="contact-card">
-          <motion.div
+          <Motion.div
             className="title"
             initial="hidden"
             whileInView="visible"
@@ -22,8 +22,8 @@ const GetInTouch = () => {
             <h4>{t("getInTouch.line1")}</h4>
             <h3>{t("getInTouch.line2")}</h3>
             <h2>{t("getInTouch.line3")}</h2>
-          </motion.div>
-          <motion.a
+          </Motion.div>
+          <Motion.a
             href="#contacts"
             className="get-in-touch-link inner-info-link"
             initial="hidden"
@@ -34,10 +34,11 @@ const GetInTouch = () => {
           >
             {t("getInTouch.cta")}
             <FaPaperPlane />
-          </motion.a>
+          </Motion.a>
         </div>
       </div>
     </div>
   );
 };
 export default GetInTouch;
+

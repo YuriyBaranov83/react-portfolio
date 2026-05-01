@@ -11,9 +11,20 @@ const FooterLinkGroup = ({ title, links, isSocial }) => {
         {links.map((link) => (
           <li key={link.id}>
             {isSocial ? (
-              <a href={link.href} target="_blank">
-                <link.label />
-              </a>
+              link.href ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.ariaLabel}
+                >
+                  <link.label />
+                </a>
+              ) : (
+                <span aria-hidden="true">
+                  <link.label />
+                </span>
+              )
             ) : (
               <Link to={link.href} smooth={true} duration={500}>
                 {link.labelKey ? t(link.labelKey) : link.label}

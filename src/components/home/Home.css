@@ -50,7 +50,7 @@
 
 .home-info p {
     font-size: var(--normal-font-size);
-    columns: var(--third-color);
+    color: var(--third-color);
     max-width: 350px;
     width: 100%;
 }

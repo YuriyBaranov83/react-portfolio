@@ -1,4 +1,4 @@
-import {
+﻿import {
   FaFacebookF,
   FaInstagram,
   FaGithub,
@@ -8,13 +8,28 @@ import {
 import { useTranslation } from "react-i18next";
 import { mainImg } from "@images";
 import "./Home.css";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { iconVariants, slideInVariants } from "@/utils/animation";
 
 const icons = [
-  { id: 1, href: "https://www.facebook.com/yuri.baranov.33", icon: <FaFacebookF /> },
-  { id: 2, href: "https://www.instagram.com/yuriy__baranov?igsh=bHk4aWYwbXR1Njlq", icon: <FaInstagram /> },
-  { id: 3, href: "https://github.com/YuriyBaranov83", icon: <FaGithub /> },
+  {
+    id: 1,
+    href: "https://www.facebook.com/yuri.baranov.33",
+    icon: <FaFacebookF />,
+    ariaLabel: "Open Facebook profile",
+  },
+  {
+    id: 2,
+    href: "https://www.instagram.com/yuriy__baranov?igsh=bHk4aWYwbXR1Njlq",
+    icon: <FaInstagram />,
+    ariaLabel: "Open Instagram profile",
+  },
+  {
+    id: 3,
+    href: "https://github.com/YuriyBaranov83",
+    icon: <FaGithub />,
+    ariaLabel: "Open GitHub profile",
+  },
 ];
 
 const Home = () => {
@@ -25,10 +40,12 @@ const Home = () => {
       <div className="container home-wrapper">
         <div className="media-icons">
           {icons.map((item, index) => (
-            <motion.a
-            target="_blank"
+            <Motion.a
+              target="_blank"
+              rel="noopener noreferrer"
               href={item.href}
               key={item.id}
+              aria-label={item.ariaLabel}
               custom={index}
               variants={iconVariants}
               initial="hidden"
@@ -36,11 +53,11 @@ const Home = () => {
               viewport={{ once: false, amount: 0.5 }}
             >
               {item.icon}
-            </motion.a>
+            </Motion.a>
           ))}
         </div>
         <div className="home-info">
-          <motion.h1
+          <Motion.h1
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
@@ -48,8 +65,8 @@ const Home = () => {
             variants={slideInVariants("left", 0.5, 100, true)}
           >
             {t("home.titleHome")}
-          </motion.h1>
-          <motion.h3
+          </Motion.h1>
+          <Motion.h3
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
@@ -57,8 +74,8 @@ const Home = () => {
             variants={slideInVariants("left", 0.7, 50, true)}
           >
             Front-end Developer
-          </motion.h3>
-          <motion.p
+          </Motion.h3>
+          <Motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
@@ -66,10 +83,12 @@ const Home = () => {
             variants={slideInVariants("left", 0.9, 50, true)}
           >
             {t("home.paragraphHome")}
-          </motion.p>
-          <motion.a
+          </Motion.p>
+          <Motion.a
             href="https://t.me/+380689777710"
             target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact on Telegram"
             className="home-info-link inner-info-link"
             initial="hidden"
             whileInView="visible"
@@ -78,9 +97,9 @@ const Home = () => {
           >
             {t("home.contactMe")}
             <FaCircleArrowRight />
-          </motion.a>
+          </Motion.a>
         </div>
-        <motion.div
+        <Motion.div
           className="home-img"
           initial="hidden"
           whileInView="visible"
@@ -90,12 +109,12 @@ const Home = () => {
         >
           <img
             src={mainImg}
-            alt="man"
+            alt="Portrait of Yuriy Baranov"
             loading="eager"
             fetchPriority="high"
             decoding="async"
           />
-        </motion.div>
+        </Motion.div>
       </div>
       <a href="#about" className="scroll-down">
         {t("home.scrollButton")}
@@ -105,3 +124,4 @@ const Home = () => {
   );
 };
 export default Home;
+

@@ -64,11 +64,8 @@
 }
 
 @media (max-width:768px) {
-    .client-swiper {
-        .swiper-button-prev,
-        .swiper-button-next {
-            display: none;
-        }
+    .client-swiper .swiper-button-prev,
+    .client-swiper .swiper-button-next {
+        display: none;
     }
-
 }

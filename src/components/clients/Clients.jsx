@@ -1,4 +1,4 @@
-import clientData from "@/data/clientsData";
+﻿import clientData from "@/data/clientsData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { SectionTitle } from "@components";
@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
 
 import "./Clients.css";
@@ -21,7 +21,7 @@ const Clients = () => {
           title={t("clients.title")}
           subtitle={t("clients.subtitle")}
         />
-        <motion.div
+        <Motion.div
           className="our-client-wrapper"
           initial="hidden"
           whileInView="visible"
@@ -58,9 +58,10 @@ const Clients = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );
 };
 export default Clients;
+

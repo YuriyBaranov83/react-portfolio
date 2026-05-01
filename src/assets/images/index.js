@@ -1,5 +1,5 @@
 export { default as aboutImg } from "@images/about-img.webp";
-export { default as mainImg } from "@images/main-img.png";
+export { default as mainImg } from "@images/main-img.webp";
 export { default as portfolio1 } from "@images/portfolio-1.webp";
 export { default as portfolio2 } from "@images/portfolio-2.webp";
 export { default as portfolio3 } from "@images/portfolio-3.webp";

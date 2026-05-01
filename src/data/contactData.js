@@ -20,6 +20,6 @@ export const contactData = [
     icon: FaLocationDot,
     titleKey: "contact.items.address.title",
     valueKey: "contact.items.address.value",
-    link: "#",
+    link: "",
   },
 ];

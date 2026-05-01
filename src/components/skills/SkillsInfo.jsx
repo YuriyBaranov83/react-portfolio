@@ -1,11 +1,11 @@
-import { useTranslation } from "react-i18next";
+﻿import { useTranslation } from "react-i18next";
 import "./Skills.css";
 import { SectionTitle } from "@components";
 import Education from "./Education";
 import Awards from "./Awards";
 import Skills from "./Skills";
 import WorkExperience from "./WorkExperience";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
 
 const SkillsInfo = () => {
@@ -19,7 +19,7 @@ const SkillsInfo = () => {
           subtitle={t("skills.skills")}
         />
         <div className="inner-content">
-          <motion.div
+          <Motion.div
             className="skills-description"
             initial="hidden"
             whileInView="visible"
@@ -29,9 +29,9 @@ const SkillsInfo = () => {
           >
             <h3>{t("skills.educationSkills")}</h3>
             <p>{t("skills.educationSkillsParagraph")}</p>
-          </motion.div>
+          </Motion.div>
           <div className="skills-info education-all">
-            <motion.div
+            <Motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
@@ -39,8 +39,8 @@ const SkillsInfo = () => {
               variants={slideInVariants("top", 0.6, 50, true)}
             >
               <Education />
-            </motion.div>
-            <motion.div
+            </Motion.div>
+            <Motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
@@ -48,8 +48,8 @@ const SkillsInfo = () => {
               variants={slideInVariants("top", 0.6, 50, true)}
             >
               <Skills />
-            </motion.div>
-            <motion.div
+            </Motion.div>
+            <Motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
@@ -57,7 +57,7 @@ const SkillsInfo = () => {
               variants={slideInVariants("top", 0.6, 50, true)}
             >
               <Awards />
-            </motion.div>
+            </Motion.div>
           </div>
           <WorkExperience />
         </div>
@@ -66,3 +66,4 @@ const SkillsInfo = () => {
   );
 };
 export default SkillsInfo;
+

@@ -1,10 +1,10 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { ImArrowRight } from "react-icons/im";
 import ServicesModal from "./ServicesModal";
 import "./Services.css";
 import { useTranslation } from "react-i18next";
 import { slideInVariants } from "@/utils/animation";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const ServicesItem = ({ services }) => {
   const { t } = useTranslation();
@@ -30,9 +30,9 @@ const ServicesItem = ({ services }) => {
         };
 
         return (
-          <motion.li
+          <Motion.li
             className="services-container"
-            key={index}
+            key={item.id}
             initial="hidden"
             whileInView="visible"
             custom={index}
@@ -42,20 +42,26 @@ const ServicesItem = ({ services }) => {
             <div className="service-card">
               <item.icon />
               <h3>{translatedItem.subtitle}</h3>
-              <div className="learn-more-btn" onClick={() => openModal(index)}>
+              <button
+                type="button"
+                className="learn-more-btn"
+                onClick={() => openModal(index)}
+                aria-label={`Open details for ${translatedItem.title}`}
+              >
                 {t("services.learnMore")}
                 <ImArrowRight className="learn-more-icon" />
-              </div>
+              </button>
             </div>
             <ServicesModal
               item={translatedItem}
               isActive={activeIndex === index}
               closeModal={closeModal}
             />
-          </motion.li>
+          </Motion.li>
         );
       })}
     </>
   );
 };
 export default ServicesItem;
+

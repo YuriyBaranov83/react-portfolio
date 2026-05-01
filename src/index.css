@@ -67,14 +67,6 @@
   --scroll-thumb-hover-color: #454f6b;
 }
 
-.dark-theme .nav-menu-btn {
-  background: url(../img/burger-white.svg) no-repeat center;
-}
-
-.dark-theme .nav-menu-btn.close {
-  background: url(../img/close-white.svg) no-repeat center;
-}
-
 *,
 *::before,
 *::after {
@@ -99,6 +91,13 @@ button {
   cursor: pointer;
 }
 
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--second-color);
+  outline-offset: 2px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -111,7 +110,6 @@ html {
   font-size: 16px;
   max-width: 100%;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
 body {
@@ -133,64 +131,6 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
-}
-
-/* Scroll to top button  */
-.scrollToTop {
-  position: fixed;
-  right: 0px;
-  bottom: 20px;
-  width: 45px;
-  height: 45px;
-  background: var(--second-color);
-  color: #fff;
-  font-size: var(--small-font-size);
-  border-radius: 3px;
-  cursor: pointer;
-  z-index: -1;
-  box-shadow: var(--box-shadow);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s linear;
-}
-
-.scrollToTop.flex-center {
-  justify-content: center;
-}
-
-.scrollToTop.active {
-  z-index: 10;
-  opacity: 1;
-  visibility: visible;
-  right: 20px;
-}
-
-/* ======= theme button Light/Dark ======= */
-.them-btn {
-  position: fixed;
-  z-index: 11;
-  right: 0;
-  top: 150px;
-  background: var(--bg-transparent-color-01);
-  backdrop-filter: blur(20px);
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 5px 0 0 5px;
-  box-shadow: var(--box-shadow);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.them-btn .fa-sun,
-.them-btn.sun .fa-moon {
-  display: none;
-}
-
-.them-btn.sun .fa-sun {
-  display: block;
 }
 
 /*=======Scroll bar=======*/
@@ -243,10 +183,5 @@ main {
   background: var(--second-color);
 }
 .swiper-pagination-bullet {
-  caret-color:transparent;
-}
-@media (max-width:390px) {
-  .inner-title {
-    font-size: 44px;
-  }
+  caret-color: transparent;
 }

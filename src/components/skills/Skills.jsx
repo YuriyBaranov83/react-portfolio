@@ -9,8 +9,8 @@ const Skills = () => {
     <div className="education">
       <h4 className="label">{t("skills.skills")}</h4>
       <ul className="bars">
-        {skills.map((item, index) => (
-          <li className="bar" key={index}>
+        {skills.map((item) => (
+          <li className="bar" key={item.id}>
             <div className="info">
               <span>{t(item.nameKey)}</span>
               <span>{item.percent}</span>

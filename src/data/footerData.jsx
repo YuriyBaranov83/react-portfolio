@@ -8,7 +8,22 @@ export const infoLinks = [
 ];
 
 export const followLinks = [
-  { id: 1, href: "", label: FaFacebookF },
-  { id: 2, href: "", label: FaInstagram },
-  { id: 3, href: "", label: FaGithub },
+  {
+    id: 1,
+    href: "https://www.facebook.com/yuri.baranov.33",
+    label: FaFacebookF,
+    ariaLabel: "Open Facebook profile",
+  },
+  {
+    id: 2,
+    href: "https://www.instagram.com/yuriy__baranov?igsh=bHk4aWYwbXR1Njlq",
+    label: FaInstagram,
+    ariaLabel: "Open Instagram profile",
+  },
+  {
+    id: 3,
+    href: "https://github.com/YuriyBaranov83",
+    label: FaGithub,
+    ariaLabel: "Open GitHub profile",
+  },
 ];

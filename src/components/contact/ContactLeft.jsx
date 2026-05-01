@@ -1,6 +1,6 @@
-import { contactData } from "@/data/contactData";
+﻿import { contactData } from "@/data/contactData";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { slideInVariants } from "@/utils/animation";
 
 const ContactLeft = () => {
@@ -8,17 +8,17 @@ const ContactLeft = () => {
 
   return (
     <div className="contact-left">
-      <motion.h2
+      <Motion.h2
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
         variants={slideInVariants("top", 0.6, 50, false)}
       >
         {t("contact.heading")}
-      </motion.h2>
+      </Motion.h2>
       <ul className="contact-list">
         {contactData.map((contact, index) => (
-          <motion.li
+          <Motion.li
             key={contact.id}
             initial="hidden"
             whileInView="visible"
@@ -30,9 +30,13 @@ const ContactLeft = () => {
               <contact.icon /> {t(contact.titleKey)}
             </h3>
             <span>
-              <a href={contact.link}>{t(contact.valueKey)}</a>
+              {contact.link ? (
+                <a href={contact.link}>{t(contact.valueKey)}</a>
+              ) : (
+                t(contact.valueKey)
+              )}
             </span>
-          </motion.li>
+          </Motion.li>
         ))}
       </ul>
     </div>
@@ -40,3 +44,4 @@ const ContactLeft = () => {
 };
 
 export default ContactLeft;
+

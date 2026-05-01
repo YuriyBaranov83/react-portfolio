@@ -1,9 +1,9 @@
-import { aboutImg } from "@images";
+﻿import { aboutImg } from "@images";
 import { FaDownload } from "react-icons/fa6";
 import { SectionTitle } from "@components";
 import { useTranslation, Trans } from "react-i18next";
 import { slideInVariants } from "@/utils/animation";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import aboutStats from "@/data/about";
 import "./About.css";
 
@@ -18,7 +18,7 @@ const About = () => {
           subtitle={t("about.titleAbout")}
         />
         <div className="about-wrapper">
-          <motion.div
+          <Motion.div
             className="about-img"
           initial="hidden"
           whileInView="visible"
@@ -26,11 +26,10 @@ const About = () => {
           variants={slideInVariants("left", 0.7, 100, false)}
         >
             <img src={aboutImg} alt="about" loading="lazy" decoding="async" />
-          </motion.div>
+          </Motion.div>
           <div className="about-info">
             <div className="description">
-              <motion.h3
-                className="about-img"
+            <Motion.h3
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
@@ -38,8 +37,8 @@ const About = () => {
                 variants={slideInVariants("right", 0.5, 50, true)}
               >
                 {t("about.name")}
-              </motion.h3>
-              <motion.h4
+              </Motion.h3>
+              <Motion.h4
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
@@ -50,8 +49,8 @@ const About = () => {
                   <span>Front-End Developer</span>
                   <span>Ukraine</span>
                 </Trans>
-              </motion.h4>
-              <motion.p
+              </Motion.h4>
+              <Motion.p
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.5 }}
@@ -59,11 +58,11 @@ const About = () => {
                 variants={slideInVariants("right", 0.6, 100, true)}
               >
                 {t("about.paragraphAbout")}
-              </motion.p>
+              </Motion.p>
             </div>
             <ul className="professional-list">
               {aboutStats.map(({ id, number, textKey }) => (
-                <motion.li
+                <Motion.li
                   className="list-item"
                   key={id}
                   initial="hidden"
@@ -74,11 +73,12 @@ const About = () => {
                 >
                   <span className="number">{number}</span>
                   <span className="text">{t(textKey)}</span>
-                </motion.li>
+                </Motion.li>
               ))}
             </ul>
-            <motion.a
-              href=""
+            <Motion.a
+              href="#contacts"
+              aria-label="Go to contact section to request CV"
               className="inner-info-link"
               initial="hidden"
               whileInView="visible"
@@ -88,7 +88,7 @@ const About = () => {
             >
               {t("about.downloadButton")}
               <FaDownload />
-            </motion.a>
+            </Motion.a>
           </div>
         </div>
       </div>
@@ -96,3 +96,4 @@ const About = () => {
   );
 };
 export default About;
+

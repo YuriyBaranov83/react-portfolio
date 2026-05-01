@@ -7,6 +7,7 @@ import {
 
 const services = [
   {
+    id: 1,
     icon: FaPenRuler,
     titleKey: "services.items.uiux.title",
     subtitleKey: "services.items.uiux.subtitle",
@@ -14,6 +15,7 @@ const services = [
     listKey: "services.items.uiux.list",
   },
   {
+    id: 2,
     icon: FaPhotoFilm,
     titleKey: "services.items.branding.title",
     subtitleKey: "services.items.branding.subtitle",
@@ -21,6 +23,7 @@ const services = [
     listKey: "services.items.branding.list",
   },
   {
+    id: 3,
     icon: FaFileCode,
     titleKey: "services.items.webdev.title",
     subtitleKey: "services.items.webdev.subtitle",
@@ -28,6 +31,7 @@ const services = [
     listKey: "services.items.webdev.list",
   },
   {
+    id: 4,
     icon: FaAlignLeft,
     titleKey: "services.items.content.title",
     subtitleKey: "services.items.content.subtitle",

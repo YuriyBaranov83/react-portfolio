@@ -1,10 +1,10 @@
-import ServicesItem from "./ServicesItem";
+﻿import ServicesItem from "./ServicesItem";
 import "./Services.css";
 import services from "../../data/services";
 import { SectionTitle } from "@components";
 import { useTranslation } from "react-i18next";
 import { slideInVariants } from "@/utils/animation";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ const Services = () => {
           subtitle={t("services.subtitle")}
         />
         <div className="services-wrapper">
-          <motion.h3
+          <Motion.h3
             className="services-description"
             initial="hidden"
             whileInView="visible"
@@ -26,7 +26,7 @@ const Services = () => {
             variants={slideInVariants("top", 0.5, 50, true)}
           >
             {t("services.description")}
-          </motion.h3>
+          </Motion.h3>
           <ul className="services-list">
             <ServicesItem services={services} />
           </ul>
@@ -36,3 +36,4 @@ const Services = () => {
   );
 };
 export default Services;
+

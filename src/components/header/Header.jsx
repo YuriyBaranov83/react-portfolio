@@ -2,15 +2,17 @@ import { FaXing } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { RemoveScroll } from "react-remove-scroll";
-import { Nav } from "@components";
+import Nav from "../nav/Nav";
 import "./Header.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  const [isSticky, setIsSticky] = useState(
+    typeof window !== "undefined" ? window.scrollY > 0 : false
+  );
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
   const handleMenuClick = () => {
@@ -22,7 +24,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -30,15 +32,22 @@ const Header = () => {
     <header className={isSticky ? "header sticky" : "header"}>
       <div className="container">
         <div className="header-wrapper">
-          <a href="" className="logo">
+          <a href="#home" className="logo" aria-label="Go to home section">
             My Logo
           </a>
           <RemoveScroll enabled={isMenuOpen}>
             <Nav isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
           </RemoveScroll>
-          <div className="nav-menu-btn" onClick={toggleMenu}>
+          <button
+            type="button"
+            className="nav-menu-btn"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="site-navigation"
+          >
             {isMenuOpen ? <FaXing /> : <FaBars />}
-          </div>
+          </button>
         </div>
       </div>
     </header>

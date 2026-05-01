@@ -3,6 +3,12 @@ import { initReactI18next } from "react-i18next";
 
 const savedLang = localStorage.getItem("lang") || "en";
 
+const resolveDocumentLang = (lang) => (lang === "ua" ? "uk" : "en");
+
+if (typeof document !== "undefined") {
+  document.documentElement.lang = resolveDocumentLang(savedLang);
+}
+
 i18n.use(initReactI18next).init({
   fallbackLng: "en",
   lng: savedLang,
@@ -522,6 +528,12 @@ i18n.use(initReactI18next).init({
       },
     },
   },
+});
+
+i18n.on("languageChanged", (lang) => {
+  if (typeof document !== "undefined") {
+    document.documentElement.lang = resolveDocumentLang(lang);
+  }
 });
 
 export default i18n;

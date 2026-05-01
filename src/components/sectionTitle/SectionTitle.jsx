@@ -1,11 +1,11 @@
-import { titleVariants, subTitleVariants } from "@/utils/animation";
+﻿import { titleVariants, subTitleVariants } from "@/utils/animation";
 import "./SectionTitle.css";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const SectionTitle = ({ title, subtitle }) => {
   return (
     <>
-      <motion.h2
+      <Motion.h2
         className="inner-title"
         initial="hidden"
         whileInView="visible"
@@ -14,8 +14,8 @@ const SectionTitle = ({ title, subtitle }) => {
         variants={titleVariants}
       >
         {title}
-      </motion.h2>
-      <motion.h3
+      </Motion.h2>
+      <Motion.h3
         className="inner-second-title"
         initial="hidden"
         whileInView="visible"
@@ -24,8 +24,9 @@ const SectionTitle = ({ title, subtitle }) => {
         variants={subTitleVariants}
       >
         {subtitle}
-      </motion.h3>
+      </Motion.h3>
     </>
   );
 };
 export default SectionTitle;
+
